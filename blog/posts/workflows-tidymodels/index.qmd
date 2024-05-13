@@ -1,12 +1,14 @@
 ---
-title: "Build several models with workflows in tidymodels"
+title: "Build several models with workflowsets in tidymodels"
 author: "Nusa Seldi"
 date: "2024-05-13"
-categories: [news, code, analysis]
+categories: [code, analysis, workflows, tidymodels, mtcars]
 image: "image.jpg"
 ---
 
 ## Introduction
+
+Trying workflowsets package with mtcars dataset to create collection of models.
 
 Motor Trend Car Road Tests (mtcars) contains the data from *Motor Trend* US magazine about fuel consumption and other aspects of automobile design and performance for 32 automobiles (1973-74 models).
 
