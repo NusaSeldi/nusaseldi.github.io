@@ -7,11 +7,18 @@
     "text": "Hello!\nI am Nusa Seldi Wibisono. Learning about data and enjoys spending time listening to music and playing games."
   },
   {
-    "objectID": "blog/posts/post-with-code/index.html",
-    "href": "blog/posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "blog/posts/welcome/index.html",
+    "href": "blog/posts/welcome/index.html",
+    "title": "Welcome To My Blog",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+    "text": "This is the first post in blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\n\n\n\n\n\nBuild several models with workflows in tidymodels\n\n\n\n\n\n\nMay 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nMay 2, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nApr 29, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -21,17 +28,66 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Posts",
+    "objectID": "blog/posts/post-with-code/index.html",
+    "href": "blog/posts/post-with-code/index.html",
+    "title": "Post With Code",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nMay 2, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nApr 29, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "blog/posts/welcome/index.html",
-    "href": "blog/posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "blog/posts/workflows-tidymodels/index.html",
+    "href": "blog/posts/workflows-tidymodels/index.html",
+    "title": "Build several models with workflows in tidymodels",
     "section": "",
-    "text": "This is the first post in blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Motor Trend Car Road Tests (mtcars) contains the data from Motor Trend US magazine about fuel consumption and other aspects of automobile design and performance for 32 automobiles (1973-74 models).\nThis time, our goal is to predict the Miles per gallon (mpg) of 32 automobiles. We will utilize tidymodels’ workflow_set function to build several regression models at once: linear model, support vector machine, and xgboost."
+  },
+  {
+    "objectID": "blog/posts/workflows-tidymodels/index.html#introduction",
+    "href": "blog/posts/workflows-tidymodels/index.html#introduction",
+    "title": "Build several models with workflows in tidymodels",
+    "section": "",
+    "text": "Motor Trend Car Road Tests (mtcars) contains the data from Motor Trend US magazine about fuel consumption and other aspects of automobile design and performance for 32 automobiles (1973-74 models).\nThis time, our goal is to predict the Miles per gallon (mpg) of 32 automobiles. We will utilize tidymodels’ workflow_set function to build several regression models at once: linear model, support vector machine, and xgboost."
+  },
+  {
+    "objectID": "blog/posts/workflows-tidymodels/index.html#import-library",
+    "href": "blog/posts/workflows-tidymodels/index.html#import-library",
+    "title": "Build several models with workflows in tidymodels",
+    "section": "Import Library",
+    "text": "Import Library\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(skimr)"
+  },
+  {
+    "objectID": "blog/posts/workflows-tidymodels/index.html#load-the-data",
+    "href": "blog/posts/workflows-tidymodels/index.html#load-the-data",
+    "title": "Build several models with workflows in tidymodels",
+    "section": "Load the data",
+    "text": "Load the data\n\ncar_df &lt;- mtcars\n\nglimpse(car_df)\n\nRows: 32\nColumns: 11\n$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…\n$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…\n$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…\n$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…\n$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…\n$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…\n$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…\n$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…\n$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…\n$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…\n$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…\n\nskim(car_df)\n\n\nData summary\n\n\nName\ncar_df\n\n\nNumber of rows\n32\n\n\nNumber of columns\n11\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nnumeric\n11\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nmpg\n0\n1\n20.09\n6.03\n10.40\n15.43\n19.20\n22.80\n33.90\n▃▇▅▁▂\n\n\ncyl\n0\n1\n6.19\n1.79\n4.00\n4.00\n6.00\n8.00\n8.00\n▆▁▃▁▇\n\n\ndisp\n0\n1\n230.72\n123.94\n71.10\n120.83\n196.30\n326.00\n472.00\n▇▃▃▃▂\n\n\nhp\n0\n1\n146.69\n68.56\n52.00\n96.50\n123.00\n180.00\n335.00\n▇▇▆▃▁\n\n\ndrat\n0\n1\n3.60\n0.53\n2.76\n3.08\n3.70\n3.92\n4.93\n▇▃▇▅▁\n\n\nwt\n0\n1\n3.22\n0.98\n1.51\n2.58\n3.33\n3.61\n5.42\n▃▃▇▁▂\n\n\nqsec\n0\n1\n17.85\n1.79\n14.50\n16.89\n17.71\n18.90\n22.90\n▃▇▇▂▁\n\n\nvs\n0\n1\n0.44\n0.50\n0.00\n0.00\n0.00\n1.00\n1.00\n▇▁▁▁▆\n\n\nam\n0\n1\n0.41\n0.50\n0.00\n0.00\n0.00\n1.00\n1.00\n▇▁▁▁▆\n\n\ngear\n0\n1\n3.69\n0.74\n3.00\n3.00\n4.00\n4.00\n5.00\n▇▁▆▁▂\n\n\ncarb\n0\n1\n2.81\n1.62\n1.00\n2.00\n2.00\n4.00\n8.00\n▇▂▅▁▁\n\n\n\n\n\nIt can be seen that the dataset consists of 32 automobiles with 11 variables. All data types are numeric and there are no missing values in the dataset."
+  },
+  {
+    "objectID": "blog/posts/workflows-tidymodels/index.html#preprocessing",
+    "href": "blog/posts/workflows-tidymodels/index.html#preprocessing",
+    "title": "Build several models with workflows in tidymodels",
+    "section": "Preprocessing",
+    "text": "Preprocessing\nFor preprocessing, we will change two variables, am (transmission) and vs (engine). We will transform the format to factor and also change the labels of the values.\n\ncar_df &lt;- car_df |&gt; \n  mutate( am = case_match(am, 1 ~ \"manual\", .default = 'automatic'),\n          vs = case_match(vs, 1 ~ 'straight', .default = 'v-shaped'),\n          am = as.factor(am),\n          vs = as.factor(vs))"
+  },
+  {
+    "objectID": "blog/posts/workflows-tidymodels/index.html#explore-the-data",
+    "href": "blog/posts/workflows-tidymodels/index.html#explore-the-data",
+    "title": "Build several models with workflows in tidymodels",
+    "section": "Explore the data",
+    "text": "Explore the data"
+  },
+  {
+    "objectID": "blog/posts/workflows-tidymodels/index.html#build-a-model",
+    "href": "blog/posts/workflows-tidymodels/index.html#build-a-model",
+    "title": "Build several models with workflows in tidymodels",
+    "section": "Build a Model",
+    "text": "Build a Model\nBefore we build a model, we will divide the data into training set and test set with a ratio of 80:20. For feature engineering, we will normalize the data for numeric data and create dummy variables for nominal data.\n\nset.seed(11)\ncar_split &lt;- initial_split(car_df, prop = 0.8)\ncar_train &lt;- training(car_split)\ncar_test &lt;- testing(car_split)\n\nset.seed(80)\ncar_fold &lt;- bootstraps(car_train, times = 10)\n\ncar_recipe &lt;- recipe(mpg ~ ., data = car_train) |&gt; \n  step_normalize(all_numeric_predictors()) |&gt; \n  step_dummy(all_nominal_predictors())\n\nlm_spec &lt;- linear_reg() |&gt; \n  set_mode('regression') |&gt; \n  set_engine('stan')\n\nxgb_spec &lt;- boost_tree() |&gt; \n  set_mode('regression') |&gt; \n  set_engine('xgboost')\n\nsvm_spec &lt;- svm_linear() |&gt; \n  set_mode('regression') |&gt; \n  set_engine('kernlab')\n\nwf_set &lt;- workflow_set(preproc = list(basic = car_recipe),\n                       models = list(lm = lm_spec,\n                                     xgboost = xgb_spec,\n                                     svm = svm_spec))\n\nwf_set_fit &lt;- workflow_map(wf_set,\n                           resamples = car_fold,\n                           seed = 123,\n                           control = control_grid(save_pred = TRUE, save_workflow = TRUE ,parallel_over = \"everything\"))"
+  },
+  {
+    "objectID": "blog/posts/workflows-tidymodels/index.html#evaluate-the-model",
+    "href": "blog/posts/workflows-tidymodels/index.html#evaluate-the-model",
+    "title": "Build several models with workflows in tidymodels",
+    "section": "Evaluate the model",
+    "text": "Evaluate the model\nFor the evaluation, we will use metric rmse to estimate our model performance. From the three models, we choose the best model according to metric rmse and fit the final model to the training set and evaluate the test set.\n\nwf_set_fit |&gt; collect_metrics(summarize = T) \n\n# A tibble: 6 × 9\n  wflow_id      .config     preproc model .metric .estimator  mean     n std_err\n  &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;\n1 basic_lm      Preprocess… recipe  line… rmse    standard   5.57     10  0.245 \n2 basic_lm      Preprocess… recipe  line… rsq     standard   0.433    10  0.0540\n3 basic_xgboost Preprocess… recipe  boos… rmse    standard   3.57     10  0.193 \n4 basic_xgboost Preprocess… recipe  boos… rsq     standard   0.728    10  0.0265\n5 basic_svm     Preprocess… recipe  svm_… rmse    standard   4.46     10  0.272 \n6 basic_svm     Preprocess… recipe  svm_… rsq     standard   0.584    10  0.0486\n\nwf_set_fit |&gt; \n  rank_results() |&gt; \n  filter(.metric == 'rmse')\n\n# A tibble: 3 × 9\n  wflow_id      .config     .metric  mean std_err     n preprocessor model  rank\n  &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt; &lt;int&gt;\n1 basic_xgboost Preprocess… rmse     3.57   0.193    10 recipe       boos…     1\n2 basic_svm     Preprocess… rmse     4.46   0.272    10 recipe       svm_…     2\n3 basic_lm      Preprocess… rmse     5.57   0.245    10 recipe       line…     3\n\nautoplot(wf_set_fit, rank_metric = 'rmse', metric = 'rmse', select_best = TRUE)\n\n\n\n\n\n\n\nbest_result &lt;- wf_set_fit |&gt; \n  extract_workflow_set_result(id = 'basic_xgboost') |&gt; \n  select_best(metric = 'rmse')\n\nxgboost_result &lt;- wf_set_fit |&gt; \n  extract_workflow('basic_xgboost') |&gt; \n  finalize_workflow(best_result) |&gt; \n  last_fit(split = car_split)\n\ncollect_metrics(xgboost_result) \n\n# A tibble: 2 × 4\n  .metric .estimator .estimate .config             \n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               \n1 rmse    standard       1.69  Preprocessor1_Model1\n2 rsq     standard       0.888 Preprocessor1_Model1\n\npredicted &lt;- xgboost_result |&gt; \n  collect_predictions()\n\npredicted |&gt; \n  select(.pred, mpg)\n\n# A tibble: 7 × 2\n  .pred   mpg\n  &lt;dbl&gt; &lt;dbl&gt;\n1  21.7  22.8\n2  17.6  19.2\n3  17.1  15.2\n4  10.4  10.4\n5  23.2  26  \n6  18.4  19.7\n7  23.0  21.4\n\npredicted |&gt; \n  ggplot(aes(x = mpg, y = .pred)) +\n  geom_point() +\n  geom_abline(lty = 2) +\n  coord_obs_pred()"
   }
 ]
