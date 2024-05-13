@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  search: true
+  title: "Nusa Seldi"
+  navbar:
+    background: dark
+    right:
+      - href: index.qmd
+        text: Home
+      - href: blog
+        text: Posts
+
+format:
+  html:
+    theme: litera
+    css: styles.css
+    toc: true
+
+editor: visual
+

@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  search: true
+  title: "Nusa Seldi"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - href: blog
+        text: Posts
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
