@@ -25,7 +25,7 @@
     "href": "blog/index.html",
     "title": "Posts",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\n\n\n\n\n\nBuild several models with workflowsets in tidymodels\n\n\n\n\n\n\nMay 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nApr 29, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\n\n\n\nPalmer Penguins Classification with XGboost and Resampling Method\n\n\n\n\n\n\nMay 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild several models with workflowsets in tidymodels\n\n\n\n\n\n\nMay 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nApr 29, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/posts/workflows-tidymodels/index.html",
@@ -82,5 +82,47 @@
     "title": "Build several models with workflows in tidymodels",
     "section": "Evaluate the model",
     "text": "Evaluate the model\nFor the evaluation, we will use metric rmse to estimate our model performance. From the three models, we choose the best model according to metric rmse and fit the final model to the training set and evaluate the test set.\n\nwf_set_fit |&gt; collect_metrics(summarize = T) \n\n# A tibble: 6 × 9\n  wflow_id      .config     preproc model .metric .estimator  mean     n std_err\n  &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;\n1 basic_lm      Preprocess… recipe  line… rmse    standard   5.57     10  0.245 \n2 basic_lm      Preprocess… recipe  line… rsq     standard   0.433    10  0.0540\n3 basic_xgboost Preprocess… recipe  boos… rmse    standard   3.57     10  0.193 \n4 basic_xgboost Preprocess… recipe  boos… rsq     standard   0.728    10  0.0265\n5 basic_svm     Preprocess… recipe  svm_… rmse    standard   4.46     10  0.272 \n6 basic_svm     Preprocess… recipe  svm_… rsq     standard   0.584    10  0.0486\n\nwf_set_fit |&gt; \n  rank_results() |&gt; \n  filter(.metric == 'rmse')\n\n# A tibble: 3 × 9\n  wflow_id      .config     .metric  mean std_err     n preprocessor model  rank\n  &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;        &lt;chr&gt; &lt;int&gt;\n1 basic_xgboost Preprocess… rmse     3.57   0.193    10 recipe       boos…     1\n2 basic_svm     Preprocess… rmse     4.46   0.272    10 recipe       svm_…     2\n3 basic_lm      Preprocess… rmse     5.57   0.245    10 recipe       line…     3\n\nautoplot(wf_set_fit, rank_metric = 'rmse', metric = 'rmse', select_best = TRUE)\n\n\n\n\n\n\n\nbest_result &lt;- wf_set_fit |&gt; \n  extract_workflow_set_result(id = 'basic_xgboost') |&gt; \n  select_best(metric = 'rmse')\n\nxgboost_result &lt;- wf_set_fit |&gt; \n  extract_workflow('basic_xgboost') |&gt; \n  finalize_workflow(best_result) |&gt; \n  last_fit(split = car_split)\n\ncollect_metrics(xgboost_result) \n\n# A tibble: 2 × 4\n  .metric .estimator .estimate .config             \n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               \n1 rmse    standard       1.69  Preprocessor1_Model1\n2 rsq     standard       0.888 Preprocessor1_Model1\n\npredicted &lt;- xgboost_result |&gt; \n  collect_predictions()\n\npredicted |&gt; \n  select(.pred, mpg)\n\n# A tibble: 7 × 2\n  .pred   mpg\n  &lt;dbl&gt; &lt;dbl&gt;\n1  21.7  22.8\n2  17.6  19.2\n3  17.1  15.2\n4  10.4  10.4\n5  23.2  26  \n6  18.4  19.7\n7  23.0  21.4\n\npredicted |&gt; \n  ggplot(aes(x = mpg, y = .pred)) +\n  geom_point() +\n  geom_abline(lty = 2) +\n  coord_obs_pred()"
+  },
+  {
+    "objectID": "blog/posts/palmer-penguins/index.html",
+    "href": "blog/posts/palmer-penguins/index.html",
+    "title": "Palmer Penguins Classification with XGboost and Resampling Method",
+    "section": "",
+    "text": "This time, we will build a XGboost model to classify the gender of palmer penguins dataset. We also gonna use resampling method to measure how well our model performance."
+  },
+  {
+    "objectID": "blog/posts/palmer-penguins/index.html#load-library",
+    "href": "blog/posts/palmer-penguins/index.html#load-library",
+    "title": "Palmer Penguins Classification with XGboost and Resampling Method",
+    "section": "Load library",
+    "text": "Load library\n\nlibrary(tidyverse) \nlibrary(tidymodels) \nlibrary(palmerpenguins) \nlibrary(vip)"
+  },
+  {
+    "objectID": "blog/posts/palmer-penguins/index.html#dataset",
+    "href": "blog/posts/palmer-penguins/index.html#dataset",
+    "title": "Palmer Penguins Classification with XGboost and Resampling Method",
+    "section": "Dataset",
+    "text": "Dataset\n\npenguin_df &lt;- penguins\nglimpse(penguin_df)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…"
+  },
+  {
+    "objectID": "blog/posts/palmer-penguins/index.html#viz-the-dataset",
+    "href": "blog/posts/palmer-penguins/index.html#viz-the-dataset",
+    "title": "Palmer Penguins Classification with XGboost and Resampling Method",
+    "section": "Viz the dataset",
+    "text": "Viz the dataset\nFrom the visualization, we can say that male penguin bigger than female penguin in terms of body mass and flipper lenght.\n\npenguin_df &lt;- penguin_df |&gt;\n  drop_na(sex) |&gt;\n  select(-year, -island)\n\npenguin_df |&gt; ggplot(aes(bill_length_mm, bill_depth_mm, color = sex)) +\n  geom_point() +\n  facet_wrap(~species)\n\n\n\n\n\n\n\npenguin_df |&gt; ggplot(aes(species, body_mass_g, color = sex)) +\n  geom_boxplot()\n\n\n\n\n\n\n\npenguin_df |&gt; ggplot(aes(flipper_length_mm, body_mass_g, color = sex)) +\n  geom_point() +\n  facet_wrap(~species)"
+  },
+  {
+    "objectID": "blog/posts/palmer-penguins/index.html#build-a-model",
+    "href": "blog/posts/palmer-penguins/index.html#build-a-model",
+    "title": "Palmer Penguins Classification with XGboost and Resampling Method",
+    "section": "Build a model",
+    "text": "Build a model\nBefore we build model, we split the data into training set and testing set. After that, we use resampling method called V-fold cross validation (CV) and build a xgboost model. For preprocessing, we impute the missing data with median and then normalize the numeric predictors and create dummy variable for categorical predictors.\n\nset.seed(99)\npenguin_split &lt;- initial_split(penguin_df, prop = 0.7, strata = sex)\npenguin_train &lt;- training(penguin_split)\npenguin_test &lt;- testing(penguin_split)\n\npenguin_fold &lt;- vfold_cv(data = penguin_train, strata = sex)\n\nbt_spec &lt;- boost_tree() |&gt;\n  set_mode(\"classification\") |&gt;\n  set_engine(\"xgboost\")\n\npenguin_recipe &lt;- recipe(sex ~ ., data = penguin_train) |&gt;\n  step_impute_median(all_numeric_predictors()) |&gt;\n  step_normalize(all_numeric_predictors()) |&gt;\n  step_dummy(all_nominal_predictors())\n\npenguin_wf &lt;- workflow() |&gt;\n  add_recipe(penguin_recipe) |&gt;\n  add_model(bt_spec)\n\nbt_fit &lt;- penguin_wf |&gt; fit_resamples(resamples = penguin_fold, control = control_resamples(save_pred = TRUE))"
+  },
+  {
+    "objectID": "blog/posts/palmer-penguins/index.html#evaluating-the-model",
+    "href": "blog/posts/palmer-penguins/index.html#evaluating-the-model",
+    "title": "Palmer Penguins Classification with XGboost and Resampling Method",
+    "section": "Evaluating the model",
+    "text": "Evaluating the model\nAs we can see, there are 10 results created from the resampling. Last, we fit the test data and evaluate the model with accuracy and ROC, also create confusion matrix\n\ncollect_metrics(bt_fit, summarize = FALSE)\n\n# A tibble: 20 × 5\n   id     .metric  .estimator .estimate .config             \n   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               \n 1 Fold01 accuracy binary         0.917 Preprocessor1_Model1\n 2 Fold01 roc_auc  binary         0.986 Preprocessor1_Model1\n 3 Fold02 accuracy binary         0.875 Preprocessor1_Model1\n 4 Fold02 roc_auc  binary         0.892 Preprocessor1_Model1\n 5 Fold03 accuracy binary         0.958 Preprocessor1_Model1\n 6 Fold03 roc_auc  binary         0.972 Preprocessor1_Model1\n 7 Fold04 accuracy binary         0.917 Preprocessor1_Model1\n 8 Fold04 roc_auc  binary         0.993 Preprocessor1_Model1\n 9 Fold05 accuracy binary         0.875 Preprocessor1_Model1\n10 Fold05 roc_auc  binary         0.917 Preprocessor1_Model1\n11 Fold06 accuracy binary         0.913 Preprocessor1_Model1\n12 Fold06 roc_auc  binary         0.970 Preprocessor1_Model1\n13 Fold07 accuracy binary         0.913 Preprocessor1_Model1\n14 Fold07 roc_auc  binary         0.962 Preprocessor1_Model1\n15 Fold08 accuracy binary         0.909 Preprocessor1_Model1\n16 Fold08 roc_auc  binary         0.959 Preprocessor1_Model1\n17 Fold09 accuracy binary         0.909 Preprocessor1_Model1\n18 Fold09 roc_auc  binary         0.983 Preprocessor1_Model1\n19 Fold10 accuracy binary         0.955 Preprocessor1_Model1\n20 Fold10 roc_auc  binary         1     Preprocessor1_Model1\n\npenguin_final &lt;- penguin_wf |&gt;\n  last_fit(penguin_split)\n\ncollect_metrics(penguin_final)\n\n# A tibble: 2 × 4\n  .metric  .estimator .estimate .config             \n  &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               \n1 accuracy binary         0.901 Preprocessor1_Model1\n2 roc_auc  binary         0.960 Preprocessor1_Model1\n\nresult &lt;- collect_predictions(penguin_final)\n\nresult |&gt; conf_mat(sex, .pred_class)\n\n          Truth\nPrediction female male\n    female     41    1\n    male        9   50\n\npenguin_final |&gt;\n  extract_fit_parsnip() |&gt;\n  vip(aesthetics = list(fill = \"navy\"))"
   }
 ]

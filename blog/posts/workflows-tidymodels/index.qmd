@@ -8,7 +8,7 @@ image: "image.jpg"
 
 ## Introduction
 
-Trying workflowsets package with mtcars dataset to create collection of models.
+Trying workflowsets package with mtcars dataset to create a collection of models.
 
 Motor Trend Car Road Tests (mtcars) contains the data from *Motor Trend* US magazine about fuel consumption and other aspects of automobile design and performance for 32 automobiles (1973-74 models).
 
