@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/posts/spaceship-titanic/index.html",
       "/blog/posts/ames-housing/index.html",
       "/blog/posts/palmer-penguins/index.html",
       "/blog/posts/workflows-tidymodels/index.html",

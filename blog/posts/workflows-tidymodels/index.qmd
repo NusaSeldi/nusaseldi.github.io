@@ -3,7 +3,6 @@ title: "Build several models with workflowsets in tidymodels"
 author: "Nusa Seldi"
 date: "2024-05-13"
 categories: [code, analysis, workflows, tidymodels, mtcars]
-image: "image.jpg"
 ---
 
 ## Introduction
