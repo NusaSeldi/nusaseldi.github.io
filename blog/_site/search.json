@@ -145,5 +145,19 @@
     "title": "Ames Housing Price Prediction",
     "section": "Predict test set and import the results",
     "text": "Predict test set and import the results\n\npred &lt;- extract_workflow(final_model) |&gt; \n  predict(ames_test)\n\npred\n\n# A tibble: 1,459 × 1\n     .pred\n     &lt;dbl&gt;\n 1 116824.\n 2 142262.\n 3 185944.\n 4 205764.\n 5 164173.\n 6 172864.\n 7 184034.\n 8 162081.\n 9 187495.\n10 116824.\n# ℹ 1,449 more rows\n\nsubmission &lt;- ames_test |&gt; \n  select(Id) |&gt; \n  bind_cols(pred) |&gt; \n  rename(SalePrice = .pred)\n\nsubmission\n\n# A tibble: 1,459 × 2\n      Id SalePrice\n   &lt;dbl&gt;     &lt;dbl&gt;\n 1  1461   116824.\n 2  1462   142262.\n 3  1463   185944.\n 4  1464   205764.\n 5  1465   164173.\n 6  1466   172864.\n 7  1467   184034.\n 8  1468   162081.\n 9  1469   187495.\n10  1470   116824.\n# ℹ 1,449 more rows\n\n\n\nwrite_csv(submission, \"submission.csv\")"
+  },
+  {
+    "objectID": "posts/book-dashboard/index.html",
+    "href": "posts/book-dashboard/index.html",
+    "title": "Books Dashboard",
+    "section": "",
+    "text": "Building a dashboard using quarto and gt package for the table"
+  },
+  {
+    "objectID": "posts/book-dashboard/index.html#mybook-dashboard",
+    "href": "posts/book-dashboard/index.html#mybook-dashboard",
+    "title": "Books Dashboard",
+    "section": "MyBook Dashboard",
+    "text": "MyBook Dashboard\nHello, for this time i built dashboard to track the books that i have read. To see the dashboard you can visit https://nusaseldi.github.io/mybook_dashboard.\nIn the dashboard, you can see how many books that i already read and the details about the book from title, author, genre, and pages. I also included the the rating that i got from goodreads. I hope I can read books consistently every month!"
   }
 ]
