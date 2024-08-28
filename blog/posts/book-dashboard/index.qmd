@@ -1,0 +1,15 @@
+---
+title: "dashboard-post"
+author: "Nusa Seldi"
+date: "2024-08-28"
+categories: [dashboard, books, quarto]
+image: "books.png"
+---
+
+Building a dashboard using quarto and gt package for the table
+
+## MyBook Dashboard
+
+Hello, for this time i built dashboard to track the books that i have read. To see the dashboard you can visit <https://nusaseldi.github.io/mybook_dashboard>.
+
+In the dashboard, you can see how many books that i already read and the details about the book from title, author, genre, and pages. I also included the the rating that i got from [goodreads](https://www.goodreads.com/). I hope I can read books consistently every month!
